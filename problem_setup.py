@@ -1,3 +1,8 @@
+"""Provide functions for randomly populated data in problems
+
+TODO: replace various functions with a single, general function taking 
+different dict of options as argument."""
+
 from random import randint
 
 def schema():
@@ -12,8 +17,10 @@ def schema():
     for key, value in choice_to_return.items():
         print '{}. {}'.format(key, value[1])
 
+    choice_keys = find_range_for_choices(choice_to_return)
     while choice not in choice_to_return:
-        choice = raw_input("Please type a number between 1 and 4\n> ")
+        choice = raw_input("Please type a number between {} and {}\n> ".
+                           format(*choice_keys))
         try:
             choice = int(choice)
         except ValueError:
@@ -30,8 +37,10 @@ def unknown_one():
     for key, value in choice_to_return.items():
         print '{}. {}'.format(key, value[1])
 
+    choice_keys = find_range_for_choices(choice_to_return)
     while choice not in choice_to_return:
-        choice = raw_input("Please type a number between 1 and 3\n> ")
+        choice = raw_input("Please type a number between {} and {}\n> ".
+                           format(*choice_keys))
         try:
             choice = int(choice)
         except ValueError:
@@ -48,8 +57,10 @@ def unknown_two():
     for key, value in choice_to_return.items():
         print '{}. {}'.format(key, value[1])
 
+    choice_keys = find_range_for_choices(choice_to_return)
     while choice not in choice_to_return:
-        choice = raw_input("Please type a number between 1 and 3\n> ")
+        choice = raw_input("Please type a number between {} and {}\n> ".
+                           format(*choice_keys))
         try:
             choice = int(choice)
         except ValueError:
@@ -66,8 +77,10 @@ def unknown_three():
     for key, value in choice_to_return.items():
         print '{}. {}'.format(key, value[1])
 
+    choice_keys = find_range_for_choices(choice_to_return)
     while choice not in choice_to_return:
-        choice = raw_input("Please type a number between 1 and 3\n> ")
+        choice = raw_input("Please type a number between {} and {}\n> ".
+                           format(*choice_keys))
         try:
             choice = int(choice)
         except ValueError:
@@ -76,19 +89,28 @@ def unknown_three():
 
 def range():
     """Define the number range"""
-    print "Choose a difficulty level"
-    print "1. Sums less than 10"
-    print "2. Sums less than 20"
-    print "3. Sums less than 100"
-    
     choice = None
-    while not (0 < choice < 4):
-        choice = raw_input("Please type a number between 1 and 3\n> ")
+    choice_to_return = {1: (1, 'Sums less than 10'), 
+                        2: (2, 'Sums less than 20'), 
+                        3: (3, 'Sums less than 100')}
+    print "Choose a difficulty level"
+    for key, value in choice_to_return.items():
+        print '{}. {}'.format(key, value[1])
+
+    choice_keys = find_range_for_choices(choice_to_return)
+    while choice not in choice_to_return:
+        choice = raw_input("Please type a number between {} and {}\n> ".
+                           format(*choice_keys))
         try:
             choice = int(choice)
         except ValueError:
             continue
-    return choice
+    return choice_to_return[choice][0]
+
+def find_range_for_choices(dictionary_of_choices):
+    """Return 2-tuple of (lowest, highest) keys in dictionary_of_choices"""
+    choice_keys = sorted(dictionary_of_choices.keys())
+    return (choice_keys[0], choice_keys[-1])
 
 def enter_name():
     """Get the gender and name"""
