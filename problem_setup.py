@@ -10,24 +10,16 @@ def schema():
     
     #To do a while loop with a condition, you need to initialize the variables
     choice = None
+    choice_to_schemata = {1: 'add-to', 2: 'take-from', 3: 'put-take',
+                          4: 'compare-more'}
     schema = ""
-    while not (0 < choice < 5):
+    while choice not in choice_to_schemata:
         choice = raw_input("Please type a number between 1 and 4\n> ")
         try:
             choice = int(choice)
-            if choice == 1:
-                schema = "add-to"
-            elif choice == 2:
-                schema = "take-from"
-            elif choice == 3:
-                schema = "put-take"
-            elif choice == 4:
-                schema = "compare-more"
-            else:
-                continue
         except ValueError:
             continue
-    return schema
+    return choice_to_schemata[choice]
 
 def unknown_one():
     """Define the unknown value for add-to and take-from schemas"""
@@ -37,21 +29,14 @@ def unknown_one():
     print "3. Result"
     
     choice = None
-    while not (0 < choice < 4):
+    choice_to_unknown = {1: 'start', 2: 'change', 3: 'result'}
+    while choice not in choice_to_unknown:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
-            if choice == 1:
-                unknown = "start"
-            elif choice == 2:
-                unknown = "change"
-            elif choice == 3:
-                unknown = "result"
-            else:
-                continue
         except ValueError:
             continue
-    return unknown
+    return choice_to_unknown[choice]
 
 def unknown_two():
     """Define the unknown value for put-take schema"""
@@ -61,21 +46,14 @@ def unknown_two():
     print "3. Both addends"
     
     choice = None
-    while not (0 < choice < 4):
+    choice_to_unknown = {1: 'one', 2: 'total', 3: 'both'}
+    while choice not in choice_to_unknown:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
-            if choice == 1:
-                unknown = "one"
-            elif choice == 2:
-                unknown = "total"
-            elif choice == 3:
-                unknown = "both"
-            else:
-                continue
         except ValueError:
             continue
-    return unknown
+    return choice_to_unknown[choice]
 
 def unknown_three():
     """Define the unknown value for compare-more schema"""
@@ -85,21 +63,14 @@ def unknown_three():
     print "3. Smaller quantity"
     
     choice = None
-    while not (0 < choice < 4):
+    choice_to_unknown = {1: 'difference', 2: 'larger', 3: 'smaller'}
+    while choice not in choice_to_unknown:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
-            if choice == 1:
-                unknown = "difference"
-            elif choice == 2:
-                unknown = "larger"
-            elif choice == 3:
-                unknown = "smaller"
-            else:
-                continue
         except ValueError:
             continue
-    return unknown
+    return choice_to_unknown[choice]
 
 def range():
     """Define the number range"""
