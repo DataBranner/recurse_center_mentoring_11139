@@ -2,75 +2,77 @@ from random import randint
 
 def schema():
     """Define the problem schema"""
-    print "What type of problem do you want?"
-    print "1. Add To"
-    print "2. Take From"
-    print "3. Put Together / Take Apart."
-    print "4. Compare"
-    
     #To do a while loop with a condition, you need to initialize the variables
     choice = None
-    choice_to_schemata = {1: 'add-to', 2: 'take-from', 3: 'put-take',
-                          4: 'compare-more'}
-    schema = ""
-    while choice not in choice_to_schemata:
+    choice_to_return = {1: ('add-to', 'Add To'), 
+                          2: ('take-from', 'Take From'), 
+                          3: ('put-take', 'Put Together / Take Apart'),
+                          4: ('compare-more', 'Compare')}
+    print "What type of problem do you want?"
+    for key, value in choice_to_return.items():
+        print '{}. {}'.format(key, value[1])
+
+    while choice not in choice_to_return:
         choice = raw_input("Please type a number between 1 and 4\n> ")
         try:
             choice = int(choice)
         except ValueError:
             continue
-    return choice_to_schemata[choice]
+    return choice_to_return[choice][0]
 
 def unknown_one():
     """Define the unknown value for add-to and take-from schemas"""
-    print "Which value is unknown?"
-    print "1. Start"
-    print "2. Change"
-    print "3. Result"
-    
     choice = None
-    choice_to_unknown = {1: 'start', 2: 'change', 3: 'result'}
-    while choice not in choice_to_unknown:
+    choice_to_return = {1: ('start', 'Start'), 
+                        2: ('change', 'Change'), 
+                        3: ('result', 'Result')}
+    print "Which value is unknown?"
+    for key, value in choice_to_return.items():
+        print '{}. {}'.format(key, value[1])
+
+    while choice not in choice_to_return:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
         except ValueError:
             continue
-    return choice_to_unknown[choice]
+    return choice_to_return[choice][0]
 
 def unknown_two():
     """Define the unknown value for put-take schema"""
-    print "Which value is unknown?"
-    print "1. One addend"
-    print "2. Total"
-    print "3. Both addends"
-    
     choice = None
-    choice_to_unknown = {1: 'one', 2: 'total', 3: 'both'}
-    while choice not in choice_to_unknown:
+    choice_to_return = {1: ('one', 'One addend'), 
+                        2: ('total', 'Total'), 
+                        3: ('both', 'Both addends')}
+    print "Which value is unknown?"
+    for key, value in choice_to_return.items():
+        print '{}. {}'.format(key, value[1])
+
+    while choice not in choice_to_return:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
         except ValueError:
             continue
-    return choice_to_unknown[choice]
+    return choice_to_return[choice][0]
 
 def unknown_three():
     """Define the unknown value for compare-more schema"""
-    print "Which value is unknown?"
-    print "1. Difference"
-    print "2. Larger quantity"
-    print "3. Smaller quantity"
-    
     choice = None
-    choice_to_unknown = {1: 'difference', 2: 'larger', 3: 'smaller'}
-    while choice not in choice_to_unknown:
+    choice_to_return = {1: ('difference', 'Difference'), 
+                        2: ('larger', 'Larger quantity'), 
+                        3: ('smaller', 'Smaller quantity')}
+    print "Which value is unknown?"
+    for key, value in choice_to_return.items():
+        print '{}. {}'.format(key, value[1])
+
+    while choice not in choice_to_return:
         choice = raw_input("Please type a number between 1 and 3\n> ")
         try:
             choice = int(choice)
         except ValueError:
             continue
-    return choice_to_unknown[choice]
+    return choice_to_return[choice][0]
 
 def range():
     """Define the number range"""
@@ -93,7 +95,7 @@ def enter_name():
     print "Should the problem feature a boy or a girl?"
     
     choice = None
-    while not(choice == 'boy' or choice == 'girl'):
+    while not (choice == 'boy' or choice == 'girl'):
         choice = raw_input("Please type 'boy' or 'girl'\n> ")
         if choice == "boy":
             gend = choice
