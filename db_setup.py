@@ -13,7 +13,6 @@ def make_table(c, table_name, columns):
         c.execute('CREATE TABLE {} {}'.format(table_name, columns))
     else:
         print "Table name already exists"
-        exit()
 
 def delete_table(c, table_name):
     tables = c.execute('''SELECT name FROM sqlite_master 
