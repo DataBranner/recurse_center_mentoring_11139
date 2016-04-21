@@ -1,1 +1,6 @@
-*student_notes
+*venv*
+*~
+*.swp
+*.swo
+*.db
+*.DS_Store
